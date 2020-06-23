@@ -22,7 +22,7 @@ export default function side() {
                 <NavLink to='/docs' >  <li><div className="sid_icon"><i class="im im-note-o"></i></div>Documents</li></NavLink>
                 <NavLink to='/commentaires' >  <li><div className="sid_icon"><i class="im im-speech-bubble-comments"></i></div>Commentaires</li></NavLink>
                 <NavLink to='/rh_space' >  <li><div className="sid_icon"><i class="im im-sitemap"></i></div>Espace RH</li></NavLink>
-                <NavLink to='/email' >  <li><div className="sid_icon"><i class="im im-mail"></i></div>Emeil</li></NavLink>
+                <NavLink to='/email' >  <li><div className="sid_icon"><i class="im im-mail"></i></div>Emailing</li></NavLink>
 
                 </ul>
                

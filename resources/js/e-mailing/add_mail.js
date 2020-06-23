@@ -1,73 +1,148 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Side from "../ServicesDash/lyoute/side";
+import { NavLink, useHistory } from "react-router-dom";
 
 
 export default function add_mail() {
 
-    const [Title,SetTitile] = useState('');
-    const [Content,SetContent] = useState('');
-    const [List,SetList] = useState('');
+    const history = useHistory();
 
-    const sendhandal = () =>
-    {
-        axios.post('/api/send_mail',{title:Title,content:Content,list:List}).then(res =>{
-            console.log(res.data)
-        })
-    }
+        const [name,setname] = useState('');
+        const [objet,setobjet] = useState('');
+        const [type,settype] = useState('');
+
+
+
+        const handelpost = () =>
+        {
+                axios.post('/api/add_mail',{
+                    name: name,
+                    objet:objet,
+                    type:type
+
+                }).then(res =>{
+
+                    if(res.data.status === true)
+                    {
+                        history.push('/add_content_mail/'+res.data.id)
+                    }
+
+                })
+        }
+        
 
 
     return (
         <div>
-          <div className="main_page">
+            <div className="main_page">
                 <div className="side">
                     <Side />
                 </div>
 
                 <div className="main_body">
+
+
+
+
+
+
                     <div className="main_section ">
-                    <div className="headline" >
 
-<h5>Ajouter un Article</h5>
-</div>
-                    <div class="container">
-                    <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input onKeyUp={(e)=>{SetTitile(e.target.value)}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
 
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea onKeyUp={(e)=>{SetContent(e.target.value)}} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
 
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select onChange={(e)=>{SetList(e.target.value)}} class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
 
-  <div class="form-group">
-  <button onClick={()=>{sendhandal()}} type="button" class="btn btn-primary">Envoyer</button>
-      </div>
+                        <div className="main_content" >
+
+
+                            <div class="row">
+                                <div class="col-sm">
+
+                                    <div class="card">
+                                        <div class="card-body cart_center active_card">
+
+                                            <i class="im im-award"></i>
+
+                                            <h5 class="card-title">Creation </h5>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-sm">
+
+                                    <div class="card">
+                                        <div class="card-body cart_center">
+
+                                            <i class="im im-flip-chart-o"></i>
+
+                                            <h5 class="card-title">Rédaction</h5>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm">
+
+                                    <div class="card">
+                                        <div class="card-body cart_center">
+                                            <i class="im im-megaphone"></i>
+                                            <h5 class="card-title">Envoi</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
 
                         </div>
+
+                    </div>
+                    <div className="main_section ">
+                        <div className="headline" >
+
+                            <h5>Paramètre</h5>
                         </div>
-                        </div>
+                        <div class="main_content">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nom de l'operation</label>
+                                <input onKeyUp={(e) => { setname(e.target.value) }} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            </div>
 
 
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Objet</label>
+                                <input onKeyUp={(e) => { setobjet(e.target.value) }} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div className="main_section ">
+                        <div className="main_content ">
+
+                            <div class="form-group">
+                              <button  onClick={()=>{handelpost()}} type="button" class="btn btn-primary">Etape suivante</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-              
+            </div>
 
-          
-   
+
+
+
+
         </div>
     )
 }

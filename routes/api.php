@@ -68,19 +68,19 @@ Route::resource('/empm', 'EmpmController');
 
 
 
-Route::post('/mail', 'MailController@send');
+Route::post('/mail_send', 'MailsController@sned_mail');
 
 
 // liste cat mail
-
 Route::get('/cat_mail', 'List_mailController@index');
 Route::get('/get_cat/{id?}', 'List_mailController@where');
 Route::post('/add_cat_mail', 'List_mailController@store');
 Route::post('/update_cat_mail', 'List_mailController@update');
 Route::post('/cat_mail/delete', 'List_mailController@delete');
 
-// Contacts list
 
+
+// Contacts list
 Route::get('/contacts/{id?}', 'ContactsController@index');
 Route::post('/contacts', 'ContactsController@store');
 Route::post('/contacts/delete', 'ContactsController@delete');
@@ -109,9 +109,37 @@ Route::post('/send_mail',function(Request $request){
 });
 
 
+
+// lists api
 Route::post('/add_list','UserListMailController@store');
 Route::post('/get_all_site','UserListMailController@index');
+Route::post('/deleteliste','UserListMailController@delete');
 
 
-Route::get('/get_mails','MailsController@index');
+// mail api
+//Route::get('/get_mails','MailsController@index');
+Route::POST('/get_all_mails','MailsController@index');
+Route::POST('/delete_mail','MailsController@delete_mail');
+Route::POST('/add_content','MailsController@add_content');
+
+
+
+
 Route::POST('/add_mail','MailsController@store');
+
+
+
+
+
+Route::POST('/base64','base64controller@index');
+
+
+
+
+
+/// contact api 
+Route::POST('/add_list_contact','ContactsListController@index');
+Route::POST('/get_all_list','ContactsListController@getcontact');
+Route::POST('/delete_all_contact_list','ContactsListController@deletall');
+Route::POST('/delete_contact','ContactsListController@delete_contact');
+

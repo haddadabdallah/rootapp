@@ -100,8 +100,8 @@
   box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
   flex-direction: column;
   border-radius: 5px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 12px;
+  padding-bottom: 10px;
   margin-top: 50px;
 }
 
@@ -721,3 +721,24 @@ width: 100%;
   padding: 20px;
 }
 
+
+
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+
+
+.active_card{
+  border: #273c75 solid 1px ;
+  border-radius: 3px;
+}
+
+.complited_card {
+  border:none;
+ color: #fff;
+  background: #00D74E ;
+  border-radius: 3px;
+  
+}

@@ -38,7 +38,11 @@ import IsAdmin from '../AppServices/IsAdmin';
 import email from '../e-mailing/email';
 import lists from '../e-mailing/lists';
 import add_mail from '../e-mailing/add_mail';
-
+import show_list from '../e-mailing/show_list';
+import operations from '../e-mailing/operations';
+import Parametre from '../e-mailing/Parametre';
+import add_mail_content from '../e-mailing/add_mail_content';
+import Envoi from '../e-mailing/Envoi';
  function Index() {
 
 
@@ -123,14 +127,24 @@ import add_mail from '../e-mailing/add_mail';
                 <IsAdmin  path='/show_rh_info/:id?' component={Show_rh_info} />
                
 
+                <Route  exect path='/add_mail' component={add_mail} />
 
+          
 
                 <Route  exect path='/login' component={login} />
                 
                 <Route  exect path='/email' component={email} />
                 <Route  exect path='/lists' component={lists} />
-                <Route  exect path='/add_mail' component={add_mail} />
+                <Route  exect path='/show_list/:id?' component={show_list} />
+                <Route  exect path='/operations' component={operations} />
+
+                <Route  exect path='/add_content_mail/:id?' component={add_mail_content} />
+                <Route exect  path='/mail_parametre/:id' component={Parametre} />
+
+                <Route exect  path='/Envoi/:id?' component={Envoi} />
                 
+
+
         </Switch>
         </BrowserRouter>
     )

@@ -2,28 +2,30 @@ import React, { useRef, useEffect, useState } from "react";
 import { Grid } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 import Side from "../ServicesDash/lyoute/side";
-import {FetchData} from '../AppServices/FetchData';
+import { FetchData } from '../AppServices/FetchData';
+import Navbar from "../Services/Layout/Navbar";
+import { NavLink } from "react-router-dom";
 
 
 export default function email() {
 
-  
-        const [data,setdata] = useState([]);
 
-    useEffect(()=>{
- 
-    
-        
-        FetchData('api/get_mails',{
-     
-        }).then(res=>{
-    
-          setdata(res.data.data)
-          console.log(res.data);
-    
+    const [data, setdata] = useState([]);
+
+    useEffect(() => {
+
+
+
+        FetchData('api/get_mails', {
+
+        }).then(res => {
+
+            setdata(res.data.data)
+            console.log(res.data);
+
         })
-    
-      },[])
+
+    }, [])
 
 
 
@@ -37,48 +39,75 @@ export default function email() {
                 </div>
 
                 <div className="main_body">
-                    <div className="main_section ">
-                        <div className="headline">
-                            <h5>Liste des operation mailing </h5>
+
+
+
+
+                    <div className="main_section" >
+
+                        <div className="headline" >
+                            <label>Emailing</label>
+
                         </div>
 
-                        <div className="padding_dash w-100" >
+                        <div className="main_content" >
 
-                        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    {
-        data.map((item,key)=>{
+                            <div class="row">
+                                <div class="col-sm">
 
-            return (
-                <tr  >
-                <th scope="row">1</th>
-                <td> {item.name} </td>
-                <td>Otto</td>
-                <td><button type="button" class="btn btn-primary">Primary</button><button type="button" class="btn btn-primary">Primary</button><button type="button" class="btn btn-primary">Primary</button></td>
+                                    <div class="card">
+                                        <div class="card-body cart_center">
+                                            <NavLink to='/lists'>
+                                                <i class="im im-award"></i>
 
-              </tr>
+                                                <h5 class="card-title">Gestion des listes</h5>
 
-            )
-
-        })
-    }
+                                            </NavLink>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
- 
-  </tbody>
-</table>
-                           
+                                <div class="col-sm">
+
+                                    <div class="card">
+                                        <div class="card-body cart_center">
+                                            <NavLink to='/operations'>
+                                                <i class="im im-flip-chart-o"></i>
+
+                                                <h5 class="card-title">Opérations emailing</h5>
+
+                                            </NavLink>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm">
+
+                                    <div class="card">
+                                        <div class="card-body cart_center">
+                                            <NavLink to='/rh_info'>
+                                                <i class="im im-megaphone"></i>
+
+                                                <h5 class="card-title">Statistiques</h5>
+
+
+                                            </NavLink>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>
